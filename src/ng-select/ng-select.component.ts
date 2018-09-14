@@ -33,7 +33,7 @@ import {
 import { VirtualScrollComponent } from './virtual-scroll.component';
 import { NgOption, KeyCode, NgSelectConfig } from './ng-select.types';
 import { ItemsList } from './items-list';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { NgOptionComponent } from './ng-option.component';
 
 export const NG_SELECT_DEFAULT_CONFIG = new InjectionToken<NgSelectConfig>('ng-select-default-options');
@@ -540,6 +540,7 @@ export class NgSelectComponent implements OnInit, OnDestroy, OnChanges, AfterVie
         }
 
         const validateBinding = (item: any) => {
+            // console.debug('type: ', typeof item, 'item: ', item);
             if (item instanceof Object && this.bindValue) {
                 throw new Error('Binding object with bindValue is not allowed.');
             }

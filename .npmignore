@@ -1,0 +1,41 @@
+# Node
+node_modules
+npm-debug.log
+
+# Yarn
+yarn-error.log
+
+# JetBrains
+.idea/
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+
+# Temporary files
+coverage/
+demo/
+docs
+tmp
+
+# Library files
+src/
+
+# proj settings
+.editorconfig
+.travis.yml
+gulpfile.js
+karma.conf.ts
+karma-test-entry.ts
+tsconfig.json
+tsconfig-aot.json
+tslint.json
+webpack-test.config.ts
+webpack-umd.config.ts
+yarn.lock

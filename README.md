@@ -1,354 +1,212 @@
-[![npm version](https://badge.fury.io/js/%40ng-select%2Fng-select.svg)](https://badge.fury.io/js/%40ng-select%2Fng-select)
-[![Build Status][travis-badge]][travis-badge-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
+# `angular-library-seed` - the starter for Angular libraries
 
-[travis-badge]: https://travis-ci.org/ng-select/ng-select.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/ng-select/ng-select
-[coveralls-image]: https://coveralls.io/repos/github/ng-select/ng-select/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/ng-select/ng-select?branch=master
+[![Build Status](https://travis-ci.org/trekhleb/angular-library-seed.svg?branch=master)](https://travis-ci.org/trekhleb/angular-library-seed)
+[![codecov](https://codecov.io/gh/trekhleb/angular-library-seed/branch/master/graph/badge.svg)](https://codecov.io/gh/trekhleb/angular-library-seed)
+[![npm version](https://badge.fury.io/js/angular-library-seed.svg)](https://badge.fury.io/js/angular-library-seed)
 
-# Angular ng-select - Lightweight all in one UI Select, Multiselect and Autocomplete
-See [Demos](https://ng-select.github.io/ng-select) or try in [Plunker](https://plnkr.co/edit/NaQ27M?p=preview)
+> Seed project for [Angular](https://angular.io/) libraries that are [AOT](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)/[JIT](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html) compatible and that use external [SCSS](http://sass-lang.com/)-styles and HTML-templates.
 
-Table of contents
-=================
+This project contains TickTock library example. The library itself is small and the only thing it does is [displaying current time](http://embed.plnkr.co/VbO1hldrCfF6ITG6VvGG/) (Plunker example). But what **most important** is that the project contains **reusable environment** for the libraries that allows to build, test, lint, document, explore and publish them.
 
-  * [Features](#features)
-  * [Getting started](#getting-started)
-  * [Roadmap](#roadmap)
-  * [API](#api)
-  * [Change detection](#change-detection)
-  * [Custom styles](#custom-styles)
-  * [Examples](#examples)
-    * [Basic example](#basic-example)
-    * [Flexible autocomplete](#flexible-autocomplete)
-    * [Custom display templates](#custom-display-templates)
-    * [Validation state](#validation-state)
-  * [Contributing](#contributing)
-  * [Development](#development)
-  * [Inspiration](#inspiration)
+> [Read more](https://medium.com/@trekhleb/how-to-create-aot-jit-compatible-angular-4-library-with-external-scss-html-templates-9da6e68dac6e) about architectural **challenges** and **solutions** used in this repository.
 
-## Features
-- [x] Custom model bindings to property or object
-- [x] Custom option, label, header and footer templates
-- [x] Virtual Scroll support with large data sets (>5000 items).
-- [x] Keyboard navigation
-- [x] Multiselect
-- [x] Flexible autocomplete with client/server filtering
-- [x] Custom tags
-- [x] Append to body
+# You might find this project helpful if
+- You want to create library for **Angular 4**.
+- You want your library to be ready for further **AOT** or **JIT** compilation.
+- You want your library to be ready for further usage **directly in browsers** (let's say [UMD](https://github.com/umdjs/umd) bundle loaded by [SystemJS](https://github.com/systemjs/systemjs)).
+- You want to write component styles in **external SCSS files**.
+- You want to write component templates in **external HTML files**.
+- You want to have **watch-mode** for library builds (including AOT build).
 
-## Warning
-Library is under active development and may have API breaking changes until stable 1.0.0 release or subsequent major versions after 1.0.0.
+# Main Features
+- **AOT/JIT** compatible library build via [Angular Compiler](https://www.npmjs.com/package/@angular/compiler-cli) (ngc).
+- **UMD** build via [Webpack](https://webpack.js.org/) that allows you to use your library for browser builds. You may play with it on [Plunker](http://embed.plnkr.co/VbO1hldrCfF6ITG6VvGG/).
+- **Testing** with [Karma](https://karma-runner.github.io/1.0/index.html) and [Jasmine](https://jasmine.github.io/).
+- **Test coverage** report via [Istanbul](https://github.com/gotwarlost/istanbul).
+- **Watch modes** for building and testing procedures that makes developing process easier.
+- **Linting** with [TSLint](https://palantir.github.io/tslint/) and [Codelyzer](https://github.com/mgechev/codelyzer) for static code analysis.
+- **Exploring your build** via [Sourcemap Explorer](https://www.npmjs.com/package/source-map-explorer) that shows you a treemap visualization to help you debug where all the code is coming from. 
+- **Documentation generation** via [Compodoc](https://github.com/compodoc/compodoc). Take a look at [documentation example](https://trekhleb.github.io/angular-library-seed/).
+- **Documentation hosting**  via [GitHub Pages](https://pages.github.com/).
+- **AOT/JIT/UMD demos** via [Webpack](https://webpack.js.org/) and [SystemJS](https://github.com/systemjs/systemjs) that allows you to test library builds.
+- **Continuous integration** with [Travis CI](https://travis-ci.org/).
+- **Code coverage** badge via [Codecov](https://codecov.io) as a reminder to cover code with tests.
 
-## Getting started
-After installing the above dependencies, install `ng-select` via:
-```shell
-npm install --save @ng-select/ng-select
+# Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/trekhleb/angular-library-seed.git
+
+# Go to repository folder
+cd angular-library-seed
+
+# Install all dependencies
+yarn install
+
+# Build the library
+yarn build
 ```
-Once installed you need to import our main module:
-```js
-import {NgSelectModule} from '@ng-select/ng-select';
-```
-The only remaining part is to list the imported module in your application module.:
-```js
-import {NgSelectModule} from '@ng-select/ng-select';
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [NgSelectModule],  
-  bootstrap: [AppComponent]
-})
-export class AppModule {
+# File Structure
+
+```
+angular-library-seed
+  ├─ demo                         * Folder for demo applications (MAY BE DELETED if not required) 
+  |  ├─ esm                       * AOT/JIT demo project
+  |  ├─ umd                       * UMD demo project
+  |  └─ ...                       * More details about this folder may be found in demo folder README file.
+  |
+  ├─ src                          * Library sources home folder (THE PLACE FOR YOUR LIBRARY SOURCES)
+  |  ├─ components                * Example of library components with tests
+  |  ├─ services                  * Example of library services with tests
+  |  ├─ index.ts                  * Library entry point that is used by builders
+  |  └─ tick-tock.module.ts       * Example of library module
+  |
+  ├─ .editorconfig                * Common IDE configuration
+  ├─ .gitignore	                  * List of files that are ignored while publishing to git repo
+  ├─ .npmignore                   * List of files that are ignored while publishing to npm
+  ├─ .travis.yml                  * Travic CI configuration
+  ├─ LICENSE                      * License details
+  ├─ README.md                    * README for you library
+  ├─ gulpfile.js                  * Gulp helper scripts
+  ├─ karma-test-entry.ts          * Entry script for Karma tests
+  ├─ karma.conf.ts                * Karma configuration for our unit tests
+  ├─ package.json                 * NPM dependencies, scripts and package configuration
+  ├─ tsconfig-aot.json            * TypeScript configuration for AOT build
+  ├─ tsconfig.json                * TypeScript configuration for UMD and Test builds
+  ├─ tslint.json                  * TypeScript linting configuration
+  ├─ webpack-test.config.ts       * Webpack configuration for building test version of the library
+  ├─ webpack-umd.config.ts        * Webpack configuration for building UMD bundle
+  └─ yarn.lock                    * Yarn lock file that locks dependency versions
+```
+
+# Getting Started
+
+## Dependencies
+
+#### Node/NPM
+Install latest Node and NPM following the [instructions](https://nodejs.org/en/download/). Make sure you have Node version ≥ 7.0 and NPM ≥ 4.
+
+- `brew install node` for Mac.
+
+#### Yarn
+[Yarn package manager](https://yarnpkg.com/en/) is optional but highly recommended. If you prefer to work with `npm` directly you may ignore this step.
+
+Yarn installs library dependencies faster and also locks theirs versions. It has [more advantages](https://yarnpkg.com/en/) but these two are already pretty attractive. 
+
+Install Yarn by following the [instructions](https://yarnpkg.com/en/docs/install).
+
+- `brew install yarn` for Mac.
+
+## Installing
+- `fork` this repository.
+- `clone` your fork to your local environment.
+- `yarn install` to install required dependencies (or `npm i`).
+
+## Replace `TickTock` library with your own library
+This step may be optional at first since you might just want to play with existing library example.
+
+Once you're ready to develop your own library you should do the following.
+- Check and re-configure `package.json` fields like `name`, `version`, `keywords`, `description` etc. You may read about specifics of npm's [package.json handling](https://docs.npmjs.com/files/package.json) to do that.
+- Replace the content of `src` folder with your library sources. Your library must have `index.ts` file as an entry point for further building.
+- Update `demo` sources to make them consume your library in case if you want to keep the demo folder.
+
+## Build the library
+- `yarn build` for building the library once (both ESM and AOT versions).
+- `yarn build:watch` for building the library (both ESM and AOT versions) and watch for file changes.
+
+You may also build UMD bundle and ESM files separately:
+- `yarn build:esm` - for building AOT/JIT compatible versions of files.
+- `yarn build:esm:watch` - the same as previous command but in watch-mode.
+- `yarn build:umd` - for building UMD bundle only.
+- `yarn build:umd:watch` - the same as previous command but in watch-mode.
+
+## Other commands
+
+#### Lint the code
+- `yarn lint` for performing static code analysis.
+
+#### Test the library
+- `yarn test` for running all your `*.spec.ts` tests once. Generated code coverage report may be found in `coverage` folder.
+- `yarn test:watch` for running all you `*.spec.ts` and watch for file changes.
+
+#### Generate documentation
+- `yarn docs` for generating documentation locally.
+- `yarn gh-pages` for generating documentation and uploading it to GitHub Pages. [Documentation example](https://trekhleb.github.io/angular-library-seed/).
+
+#### Explore the bundle
+- `yarn explorer` to find out where all your code in bundle is coming from.
+
+#### Bump library version
+- `npm version patch` to increase library version. [More on bumping](https://docs.npmjs.com/cli/version).
+
+`preversion` script in this case will automatically run project testing and linting in prior in order to check that the library is ready for publishing.
+
+#### Publish library to NPM
+- `npm publish` to publish your library sources on [npmjs.com](https://www.npmjs.com/). Once the library is published it will be [available for usage](https://www.npmjs.com/package/angular-library-seed) in npm packages.
+
+`prepublishOnly` script in this case will automatically run project testing and linting in prior in order to check that the library is ready for publishing.
+
+#### Cleaning
+- `yarn clean:tmp` command will clean up all temporary files like `docs`, `dist`, `coverage` etc.
+- `yarn clean:all` command will clean up all temporary files along with `node_modules` folder. 
+
+# Library development workflow
+
+In order to debug your library in browser you need to have Angular project that will consume your library, build the application and display it. For your convenience all of that should happen automatically in background so once you change library source code you should instantly see the changes in browser.
+
+There are several ways to go here:
+- Use your **real library-consumer project** and link your library to it via `yarn link` command (see below).
+- Use [demo applications](https://github.com/trekhleb/angular-library-seed/tree/master/demo) that are provided for your convenience as a part of this repository.
+- Use [Angular-CLI](https://cli.angular.io/) to generate library-consumer project for you and then use `yarn link` to link your library to it.
+
+### Using demo applications
+
+You may take advantage of watch-modes for both library build and [demo-projects](https://github.com/trekhleb/angular-library-seed/tree/master/demo) builds in order to see changes to your library's source code immediately in your browser.
+
+To do so you need to:
+1. Open two console instances.
+2. Launch library build in watch mode in first console instance by running `yarn build:watch` (assuming that you're in `angular-library-seed` root folder).
+3. Launch demo project build (JIT version) in watch-mode by running `yarn start` in second console instance (assuming that you're in `angular-library-seed/demo` folder).
+
+As a result once you change library source code it will be automatically re-compiled and in turn your JIT demo-project will be automatically re-built and you will be able to see that changes in your browser instantly.
+
+For more details about demo projects, their folder structure and npm commands please take a look at [demo projects README](https://github.com/trekhleb/angular-library-seed/tree/master/demo).
+
+### Using `yarn link`
+
+In you library root folder:
+
+```bash
+# Create symbolic link
+yarn link
+
+# Build library in watch mode
+yarn build:watch
+```
+
+In you project folder that should consume the library:
+
+```bash
+# Link you library to the project
+yarn link "angular-library-seed"
+
+# Build your project. In case of Angular-CLI use the following command.
+ng serve --aot
+```
+
+Then you need to import your library into your project's source code.
+
+Now, once you update your library source code it will automatically be re-compiled and your project will be re-built so you may see library changes instantly.
+
+[More information](https://yarnpkg.com/en/docs/cli/link) about `yarn link` command.
+
+> At the moment of publishing this project there is a [bug](https://github.com/angular/angular-cli/issues/3854) exists when using `yarn link` in combination with Angular CLI. The issue is caused by having `node_modules` folder inside linked library. There is a [workaround](https://github.com/angular/angular-cli/issues/3854#issuecomment-274344771) has been provided that suggests to add a `paths` property with all Angular dependencies to the `tsconfig.json` file of the Angular CLI project like it is shown below:
+```
+{
+  "compilerOptions": {
+    "paths": { "@angular/*": ["../node_modules/@angular/*"] }
+  }
 }
 ```
-You can also configure global configuration and localization messages by providing custom NG_SELECT_DEFAULT_CONFIG
-```js
-    providers: [
-        {
-            provide: NG_SELECT_DEFAULT_CONFIG,
-            useValue: {
-                notFoundText: 'Custom not found'
-            }
-        }
-    ]
-```
-### SystemJS
-If you are using SystemJS, you should also adjust your configuration to point to the UMD bundle.
-
-In your systemjs config file, `map` needs to tell the System loader where to look for `ng-select`:
-```js
-map: {
-  '@ng-select/ng-select': 'node_modules/@ng-select/ng-select/bundles/ng-select.umd.js',
-}
-```
-
-## Roadmap
-
-- [x] Custom binding to property or object
-- [x] Custom option and label templates
-- [x] Virtual Scroll support with large data sets (>5000 items).
-- [x] Filter data by display text
-- [x] Filter data by custom filter function
-- [x] Expose useful events like blur, change, focus, close, open ...
-- [x] Correct keyboard events behaviour
-- [x] Integration app generated with angular-cli
-- [x] Good base functionality test coverage
-- [x] Multiselect support
-- [x] Autocomplete
-- [x] Custom tags
-- [ ] Items grouping
-- [ ] Custom themes
-- [ ] Accessibility
-- [ ] Many more
-
-## API
-| Input  | Type | Default | Required | Description |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| [items] | Array<NgOption> | `[]` | yes | Items array |
-| bindLabel  | string | `label` | no | Object property to use for label. Default `label`  |
-| bindValue  | string | `-` | no | Object property to use for selected model. By default binds to whole object. |
-| [clearable] | boolean | `true` | no | Allow to clear selected value. Default `true`|
-| [markFirst] | boolean | `true` | no | Marks first item as focused when opening/filtering. Default `true`|
-| [searchable] | boolean | `true` | no | Allow to search for value. Default `true`|
-| multiple | boolean | `false` | no | Allows to select multiple items. |
-| maxSelectedItems | number | none | no | When multiple = true, allows to set a limit number of selection. |
-| [addTag] | Function or boolean | `false` | no | Allows to create custom options. Using boolean simply adds tag with value as bindLabel. If you want custom properties add function which returns object. |
-| placeholder | string | `-` | no | Placeholder text. |
-| notFoundText | string | `No items found` | no | Set custom text when filter returns empty result |
-| typeToSearchText | string | `Type to search` | no | Set custom text when using Typeahead |
-| clearAllText | string | `Clear all` | no | Set custom text for clear all icon title |
-| addTagText | string | `Add item` | no | Set custom text when using tagging |
-| loadingText | string | `Loading...` | no | Set custom text when for loading items |
-| [typeahead] | Subject |  `-` | no | Custom autocomplete or filter. |
-| [disableVirtualScroll] | boolean |  false | no | Disable virtual scroll |
-| dropdownPosition | `bottom`,`top`,`auto` |  `bottom` | no | Set the dropdown position on open |
-| appendTo | string |  null | no | Append drodown to body or any other element using css selector |
-| loading | boolean |  `-` | no | you can set the loading state from the outside (e.g. async items loading) |
-| closeOnSelect | boolean |  true | no | whether to close the menu when a value is selected |
-
-| Output  | Description |
-| ------------- | ------------- |
-| (focus)  | Fired on select focus |
-| (blur)  | Fired on select blur |
-| (change)  | Fired on selected value change |
-| (open)  | Fired on select dropdown open |
-| (close)  | Fired on select dropdown close |
-| (clear)  | Fired on clear icon click |
-| (add)  | Fired when item is selected |
-| (remove)  | Fired when item is removed |
-
-## Change Detection
-Ng-select component implements `OnPush` change detection which means the dirty checking checks for immutable 
-data types. That means if you do object mutations like:
-
-```javascript
-this.items.push({id: 1, name: 'New item'})
-``` 
-
-Component will not detect a change. Instead you need to do:
-
-```javascript
-this.items.push({id: 1, name: 'New item'})
-this.items = [...this.items];
-```
-
-This will cause the component to detect the change and update. Some might have concerns that
-this is a pricey operation, however, it is much more performant than running `ngDoCheck` and
-constantly diffing the array.
-
-## Custom styles
-If you are not happy with default styles you can easily override them with increased selector specificity. E.g.
-
-```html
-<ng-select class="custom"></ng-select>
-```
-
-```css
-.ng-select.custom {
-    border:0px;
-    min-height: 0px;
-    border-radius: 0;
-}
-.ng-select.custom .ng-control  {            
-    min-height: 0px;
-    border-radius: 0;
-}
-```
-
-## Examples
-### Basic example
-This example in [Plunkr](https://plnkr.co/edit/hjZX6W?p=preview)
-
-```js
-@Component({
-    selector: 'cities-page',
-    template: `
-        <label>City</label>
-        <ng-select [items]="cities"
-                   bindLabel="name"
-                   bindValue="id"
-                   placeholder="Select city"
-                   [(ngModel)]="selectedCityId">
-        </ng-select>
-        <p>
-            Selected city ID: {{selectedCityId}}
-        </p>
-    `
-})
-export class CitiesPageComponent {
-    cities = [
-        {id: 1, name: 'Vilnius'},
-        {id: 2, name: 'Kaunas'},
-        {id: 3, name: 'Pabradė'}
-    ];
-    selectedCityId: any;
-}
-```
-
-### Flexible autocomplete
-
-This example in [Plunkr](https://plnkr.co/edit/KFpvA9?p=preview)
-
-In case of autocomplete you can get full control by creating simple `EventEmmiter` and passing it as an input to ng-select. When you type text, ng-select will fire events to EventEmmiter to which you can subscribe and control bunch of things like debounce, http cancellation and so on.
-```js
-@Component({
-    selector: 'select-autocomplete',
-    template: `
-        <label>Search with autocomplete in Github accounts</label>
-        <ng-select [items]="items"
-                   bindLabel="login"
-                   placeholder="Type to search"
-                   [typeahead]="typeahead"
-                   [(ngModel)]="githubAccount">
-            <ng-template ng-option-tmp let-item="item">
-                <img [src]="item.avatar_url" width="20px" height="20px"> {{item.login}}
-            </ng-template>
-        </ng-select>
-        <p>
-            Selected github account:
-            <span *ngIf="githubAccount">
-                <img [src]="githubAccount.avatar_url" width="20px" height="20px"> {{githubAccount.login}}
-            </span>
-        </p>
-    `
-})
-export class SelectAutocompleteComponent {
-
-    githubAccount: any;
-    items = [];
-    
-    // event emmiter is just RxJs Subject
-    typeahead = new EventEmitter<string>();
-
-    constructor(private http: HttpClient) {
-        this.typeahead
-            .distinctUntilChanged()
-            .debounceTime(200)
-            .switchMap(term => this.loadGithubUsers(term))
-            .subscribe(items => {
-                this.items = items;
-            }, (err) => {
-                console.log(err);
-                this.items = [];
-            });
-    }
-
-    loadGithubUsers(term: string): Observable<any[]> {
-        return this.http.get<any>(`https://api.github.com/search/users?q=${term}`).map(rsp => rsp.items);
-    }
-}
-```
-
-### Custom display templates
-This example in [Plunkr](https://plnkr.co/edit/csZbjH?p=preview)
-
-To customize look of ng-select you can use `ng-template` with `ng-label-tmp`, `ng-option-tmp`, `ng-header-tmp`, `ng-footer-tmp` directives applied to it.
-```js
-import {Component, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {NgSelectModule} from '@ng-select/ng-select';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-
-@Component({
-    selector: 'select-custom-templates',
-    template: `
-        <label>Demo for ng-select with custom templates</label>
-        <ng-select [items]="albums"
-                   [(ngModel)]="selectedAlbumId"
-                   bindLabel="title"
-                   bindValue="id"
-                   placeholder="Select album">
-            <ng-template ng-header-tmp>
-               Custom header
-            </ng-template>
-            <ng-template ng-label-tmp let-item="item">
-               <b>({{item.id}})</b> {{item.title}}
-            </ng-template>
-            <ng-template ng-option-tmp let-item="item">
-                <div>Title: {{item.title}}</div>
-                <small><b>Id:</b> {{item.id}} | <b>UserId:</b> {{item.userId}}</small>
-            </ng-template>
-            <ng-template ng-footer-tmp>
-               Custom footer
-            </ng-template>
-        </ng-select>
-        <p>Selected album ID: {{selectedAlbumId || 'none'}}</p>
-    `
-})
-export class SelectCustomTemplatesComponent {
-    albums = [];
-    selectedAlbumId = null;
-
-    constructor(http: HttpClient) {
-        http.get<any[]>('https://jsonplaceholder.typicode.com/albums').subscribe(albums => {
-            this.albums = albums;
-        });
-    }
-}
-```
-
-### Validation state
-By default when you use reactive forms validators or template driven forms validators css class `ng-invalid` will be applied on ng-select. You can show errors state by having adding this custom css style
-
-```css
-ng-select.ng-invalid.ng-touched .ng-control {
-    border-color: #dc3545;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
-}
-```
-
-### More demos
-Visit [demos](https://github.com/ng-select/ng-select/tree/master/demo/app/examples) for more examples.
-
-
-## Contributing
-
-Contributions are welcome. You can start by looking at [issues](https://github.com/ng-select/ng-select/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) with label *Help wanted*  or creating new Issue with proposal or bug report.
-Note that we are using https://conventionalcommits.org/ commits format.
-
-## Development
-
-Perform the _clone-to-launch_ steps with these terminal commands.
-
-### Run demo page in watch mode
-```
-git clone https://github.com/ng-select/ng-select
-cd ng-select
-yarn
-yarn run start
-```
-### Testing
-```
-yarn run test
-or
-yarn run test:watch
-```
-
-### Release
-
-To release to npm just run `./release.sh`, of course if you have permissions ;)
-
-## Inspiration
-This component is inspired by [React select](https://github.com/JedWatson/react-select) and [Vitual scroll](https://github.com/rintoj/angular2-virtual-scroll). Check theirs amazing work and components :)

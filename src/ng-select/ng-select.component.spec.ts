@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from './ng-select.module';
 import { NgSelectComponent } from './ng-select.component';
 import { KeyCode, NgOption } from './ng-select.types';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 describe('NgSelectComponent', function () {
 

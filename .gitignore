@@ -1,8 +1,8 @@
-node_modules
-coverage
-dist
-out-tsc
-.idea
-.DS_Store
-travis_rsa
-travis_rsa.pub
+/tmp
+/.idea
+/coverage
+/dist
+/docs
+/node_modules
+/scripts
+/package-lock.json
